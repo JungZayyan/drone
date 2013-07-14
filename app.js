@@ -7,7 +7,8 @@ var express = require('express'),
     path = require('path'),
     utils = require('./utils'),
     io = require('socket.io'),
-    log = new utils.Log('drone');
+    log = new utils.Log('drone'),
+    fs = require('fs');
 
 log.verbose(true);
 log.info('starting application...');
@@ -63,4 +64,21 @@ droneControl.on('frame', function (png, faces) {
         png: new Buffer(png).toString('base64'),
         faces: faces
     });
+});
+
+io.sockets.on('png-save', function(png) {
+    timestamp = (new Date()).getTime().toString();
+    fs.writeFile('samples/sample-' + timestamp,
+                 new Buffer(png, 'base64'), function(error) {
+        if (error) log.error('error saving sample');
+    });
+})
+
+var landed = true;
+io.sockets.on('power', function() {
+    if (landed) {
+        drone.takeoff();
+    } else {
+        drone.land();
+    }
 });
