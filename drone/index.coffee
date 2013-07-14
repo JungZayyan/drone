@@ -26,14 +26,14 @@ class Drone extends EventEmitter
 
     takeoff: ->
         @log.info 'taking off...'
-        @arClient.takeoff ->
+        @arClient.takeoff =>
             @log.notice 'drone took off'
             @arClient.stop()
 
     land: ->
         @log.info 'landing...'
         @arClient.stop()
-        @arClient.land ->
+        @arClient.land =>
             @log.notice 'drone landed'
 
 

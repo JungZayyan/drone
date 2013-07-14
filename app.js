@@ -38,7 +38,7 @@ app.configure('development', function(){
 });
 
 log.info('creating AR.drone control...');
-droneControl = drone();
+droneControl = drone(log);
 
 api(app, droneControl);
 routes(app);
@@ -66,19 +66,26 @@ droneControl.on('frame', function (png, faces) {
     });
 });
 
-io.sockets.on('png-save', function(png) {
-    timestamp = (new Date()).getTime().toString();
-    fs.writeFile('samples/sample-' + timestamp,
-                 new Buffer(png, 'base64'), function(error) {
-        if (error) log.error('error saving sample');
-    });
-})
-
 var landed = true;
-io.sockets.on('power', function() {
-    if (landed) {
-        drone.takeoff();
-    } else {
-        drone.land();
-    }
+
+io.sockets.on('connection', function (socket) {
+
+    socket.on('png-saved', function(data) {
+        log.info('socket.io: png-save');
+        timestamp = (new Date()).getTime().toString();
+        fs.writeFile('samples/sample-' + timestamp + '.png',
+                     data.png, 'base64', function(error) {
+            if (error) log.error('error saving sample');
+        });
+    })
+
+    socket.on('power', function() {
+        log.info('socket.io: power');
+        if (landed) {
+            droneControl.takeoff();
+        } else {
+            droneControl.land();
+        }
+        landed = !landed;
+    });
 });
