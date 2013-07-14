@@ -37,11 +37,12 @@
 
     //'private' methods
     function renderRectangle (rect) {
-        this.context.save();
+        //this.context.save();
+        this.context.beginPath();
         this.context.rect(rect.x, rect.y, rect.width, rect.height);
         this.context.lineWidth = 3;
         this.context.strokeStyle = '#FF0000';
         this.context.stroke();
-        this.context.restore();
+        //this.context.restore();
     }
 })(window.app, jQuery);
