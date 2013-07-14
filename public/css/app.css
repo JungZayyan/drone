@@ -3,3 +3,13 @@ canvas {
     border: 2px dashed #333;
     margin: 0 auto 20px;
 }
+.directional-controls {
+    margin: 20px 0 0;
+}
+.directional-controls .row-fluid {
+    margin: 10px 0;
+}
+.directional-controls .btn {
+    display: block;
+    margin: 0 auto;
+}

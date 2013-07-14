@@ -27,6 +27,11 @@
             })
             .on('click', 'button#stabilize', function () {
                 app.socekt.emit('stabilize', {});
+            })
+            .on('click', 'button.direction', function () {
+                var dir = $(this).attr('id');
+
+                app.socket.emit('direction', {direction: dir})
             });
     }
 
