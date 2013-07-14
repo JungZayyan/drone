@@ -24,6 +24,9 @@
             })
             .on('click', 'button#power', function () {
                 app.socket.emit('power', {});
+            })
+            .on('click', 'button#stabilize', function () {
+                app.socekt.emit('stabilize', {});
             });
     }
 

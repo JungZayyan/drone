@@ -6,18 +6,23 @@ html
 
     body
         .container-fluid
-            .row-fluid
-                h1 Aerial Event Photographer v.01
-                .well
+            h1 Aerial Event Photographer v.01
+            .row-fluid    
+                .well.span8
                     .row-fluid
                         canvas(width="640", height="360")#png-stream
                     .row-fluid
                         canvas(width="640", height="360")#png-still
          
-                .well
-                    button.btn.btn-primary.btn-large.btn-block#still Take Picture &raquo;
-                    button.btn.btn-success.btn-large.btn-block#power On/Off
-                    button.btn.btn-large.btn-block#stabalize Stabilize
+                .span4 
+                    h2 Controls
+                    .well
+                        h3 Drone
+                        button.btn.btn-success.btn-large.btn-block#power On/Off
+                        button.btn.btn-large.btn-block#stabilize Stabilize
+                    .well
+                        h3 Camera
+                         button.btn.btn-primary.btn-large.btn-block#still Take Picture &raquo;
 
         script(src="js/jquery-1.10.2.min.js")
         script(src="js/bootstrap.min.js")
