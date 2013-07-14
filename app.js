@@ -56,8 +56,10 @@ io.sockets.on('connection', function (socket) {
   });
 });
 
-droneControl.on('png', function (data) {
-    log.info('received png frame');
-    io.sockets.emit('png-update', { png: new Buffer(data).toString('base64') });
+droneControl.on('frame', function (png, faces) {
+    log.info('received frame, with ' + faces.length + ' faces');
+    io.sockets.emit('png-update', {
+        png: new Buffer(png).toString('base64'),
+        faces: faces
+    });
 });
-

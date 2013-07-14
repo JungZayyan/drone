@@ -8,7 +8,15 @@ class Drone extends EventEmitter
         @arClient  = arDrone.createClient()
         @pngStream = @arClient.getPngStream()
         @pngStream.on 'data', (data) =>
-            @emit 'png', data
+            opencv.readImage data, (error, mat) =>
+                return @log.error 'error reading image' if error
+                @processMatrix mat, (error, faces) ->
+                    @emit 'frame', data, faces
+
+    processMatrix: (mat, callback) ->
+        mat.detectObject opencv.FACE_CASCADE, {}, (error, faces) =>
+            return callback @lor.error 'error processing matrix' if error
+            callback null, faces
 
     takeoff: ->
         @log.info 'taking off...'
