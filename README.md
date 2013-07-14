@@ -1,24 +1,27 @@
 drone
 =====
 
-Summer of Drones.
+This is our [Ottawa Summer of Drones](http://ottawadrones.com/) 2013 project.
+This is *very* quick-and-dirty, made in 6 hours.
 
-IPs
----
-On ShopifyGuest:
+To make it work:
 
-192.168.30.125 - Jean
-192.168.30.128 - Mike
+```sh
+$ git clone git@github.com:undashes/drone.git
+$ cd drone
+$ npm install
+$ node app.js
+```
 
-On the dr0ne:
+There is a bunch of dependencies to install beforehand, depending on the
+operating system, notably, the OpenCV headers and libraries.
 
-Drone - 192.168.1.1
-192.168.1.2 - Jean
-192.168.1.3 - Mike
-192.168.1.4 - Tom's phone
+Then you should be able to go on http://localhost:3000/ to access the app
+and start the [AR.drone](http://ardrone2.parrot.com/)
+(you must be connected to the drone Wifi access point).
 
+The application is supposed to make the drone follow the detected heads
+and take a photo when the heads are centered. This behavior, though, is
+pretty alpha. Head-detection with OpenCV, though, is working.
 
-Wireless
---------
-ardrone_149602
-
+Feel free to fork and play with it.

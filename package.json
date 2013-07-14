@@ -7,7 +7,12 @@
     "ar-drone"
   ],
   "homepage": "https://github.com/undashes/drone",
-  "author": {},
+  "contributors": {
+    "mzs-github (https://github.com/mzs-github)",
+    "Thomas Martineau <mart0657@gmail.com> (https://github.com/tmartineau)",
+    "Zayyan Ahmed <zayyan.ahmed@gmail.com> (https://github.com/JungZayyan)",
+    "Jean Lauliac <jean@lauliac.com> (http://jean.lauliac.com)"
+  },
   "repository": {
     "type": "git",
     "url": "git@github.com:undashes/drone.git"
