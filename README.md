@@ -12,5 +12,13 @@ On ShopifyGuest:
 
 On the dr0ne:
 
-xxx - Jean
-yyy - Mike
+Drone - 192.168.1.1
+192.168.1.2 - Jean
+192.168.1.3 - Mike
+192.168.1.4 - Tom's phone
+
+
+Wireless
+--------
+ardrone_149602
+
