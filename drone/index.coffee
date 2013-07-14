@@ -1,6 +1,7 @@
-_               = require('lodash')
-arDrone         = require('ar-drone')
+_               = require 'lodash'
+arDrone         = require 'ar-drone'
 {EventEmitter}  = require 'events'
+opencv          = require 'opencv'
 
 class Drone extends EventEmitter
     constructor: (@log) ->

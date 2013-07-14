@@ -57,6 +57,7 @@ io.sockets.on('connection', function (socket) {
 });
 
 droneControl.on('png', function (data) {
-    io.sockets.emit('png', { png: new Buffer(data).toString('base64') });
+    log.info('received png frame');
+    io.sockets.emit('png-update', { png: new Buffer(data).toString('base64') });
 });
 
