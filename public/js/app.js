@@ -17,11 +17,14 @@
         });
     }
     function setupUiListeners () {
-        $('body').on('click', 'button#still', function () {
-            var img = app.streamCanvas.getImg();
-            console.log(img);
-            app.pngStill.render(img);
-        });
+        $('body')
+            .on('click', 'button#still', function () {
+                var img = app.streamCanvas.getImg();
+                app.pngStill.render(img);
+            })
+            .on('click', 'button#power', function () {
+                app.socket.emit('power', {});
+            });
     }
 
     app.init = function () {
