@@ -88,4 +88,9 @@ io.sockets.on('connection', function (socket) {
         }
         landed = !landed;
     });
+
+    socket.on('stabilize', function() {
+        log.info('socket.io: stabilize');
+        droneControl.calibrate();
+    });
 });

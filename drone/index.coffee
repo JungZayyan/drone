@@ -32,6 +32,8 @@ class Drone extends EventEmitter
 
     takeoff: ->
         @log.info 'taking off...'
+        @arClient.disableEmergency()
+        @arClient.stop()
         @arClient.takeoff =>
             @log.notice 'drone took off'
             @arClient.stop()
@@ -42,6 +44,9 @@ class Drone extends EventEmitter
         @arClient.land =>
             @log.notice 'drone landed'
 
+    calibrate: ->
+        @arClient.stop()
+        @arClient.calibrate(0)
 
 module.exports = (log) ->
     new Drone(log)
