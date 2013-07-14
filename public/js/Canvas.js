@@ -7,6 +7,8 @@
     app.Canvas = function (canvasEl) {
         this.el = canvasEl;
         this.context = this.el.getContext('2d');
+        this.width = $(canvasEl).attr('width');
+        this.height = $(canvasEl).attr('height');
     }
     
     app.Canvas.prototype.render = function (imgData) {
@@ -14,7 +16,7 @@
         
         console.log(imgData);
         img.onload = function () {
-            this.context.drawImage(this, 0, 0, this.el.width, this.el.height);
+            this.context.drawImage(this, 0, 0, this.width, this.height);
         }
         img.src = 'data:image/png;base64,' + imgData;
     }
