@@ -1,0 +1,25 @@
+{
+  "private": true,
+  "name": "drone",
+  "version": "0.1.0",
+  "description": "Summer of Drones.",
+  "keywords": [
+    "ar-drone"
+  ],
+  "homepage": "https://github.com/undashes/drone",
+  "author": {
+    "name": "Jean Lauliac",
+    "email": "jean@lauliac.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:undashes/drone.git"
+  },
+  "dependencies": {
+    "ar-drone": "~0.1.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=0.8.0"
+  }
+}
