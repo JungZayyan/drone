@@ -21,10 +21,16 @@
     app.Canvas.prototype.renderRectangles = function (rectangles) {
 
         //Expects an array of rectangles
+        _.forEach(rectangles, renderRectangle, this);
     }
 
     //'private' methods
-    function renderRectangle () {
-        
+    function renderRectangle (rect) {
+        this.context.save();
+        this.context.rect(rect.join(','));
+        this.context.lineWidth = 3;
+        this.context.strokeStyle = 'black';
+        this.context.stroke();
+        this.context.reset();
     }
 })(var app = app || {}, jQuery);

@@ -3,6 +3,8 @@
  */
 
 (function (app, $) {
+    'use strict';
+
     /***********************
     ** Setup functions
     ***********************/
@@ -11,6 +13,7 @@
 
             //Assuming that we are getting base64 render that to the canvas
             app.streamCanvas.render(data.png);
+            app.streamCanvas.renderRectangles(data.rectangles);
         });
     }
     function setupUiListeners () {
