@@ -39,7 +39,7 @@
         this.context.save();
         this.context.rect(rect.x, rect.y, rect.width, rect.height);
         this.context.lineWidth = 3;
-        this.context.strokeStyle = 'black';
+        this.context.strokeStyle = '#FF0000';
         this.context.stroke();
         this.context.reset();
     }
