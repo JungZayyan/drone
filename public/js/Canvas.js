@@ -31,7 +31,7 @@
         _.forEach(rectangles, renderRectangle, this);
     }
     app.Canvas.prototype.getImg = function () {
-        app.socket.emit('png-saved', {png: img.replace('data:image/png;base64,', '')});
+        app.socket.emit('png-saved', {png: this.currentImg.replace('data:image/png;base64,', '')});
         return {png: this.currentImg, faces: []};
     }
 
