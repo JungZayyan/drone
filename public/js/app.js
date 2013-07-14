@@ -32,6 +32,11 @@
                 var dir = $(this).attr('id');
 
                 app.socket.emit('direction', {direction: dir})
+            })
+            .on('click', 'button.direction-rotate', function () {
+                var dir = $(this).attr('id').replace('rotate-', '');
+
+                app.socket.emit('direction-rotate', {direction: dir});
             });
     }
 
