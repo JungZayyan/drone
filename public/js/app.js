@@ -12,8 +12,8 @@
         app.socket.on('png-update', function (data) {
 
             //Assuming that we are getting base64 render that to the canvas
-            app.streamCanvas.render(data.png);
-            app.streamCanvas.renderRectangles(data.faces);
+            app.streamCanvas.render(data);
+            //app.streamCanvas.renderRectangles(data.faces);
         });
     }
     function setupUiListeners () {

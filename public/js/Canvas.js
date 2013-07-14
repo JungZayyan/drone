@@ -11,14 +11,15 @@
         this.height = $(canvasEl).attr('height');
     }
     
-    app.Canvas.prototype.render = function (imgData) {
+    app.Canvas.prototype.render = function (data) {
         var img = new Image(),
-            imgUrl = imgData.indexOf('data:image/png;base64,') !== -1 ? imgData : 'data:image/png;base64,' + imgData,
+            imgUrl = data.png.indexOf('data:image/png;base64,') !== -1 ? data.png : 'data:image/png;base64,' + data.png,
             _this = this;
         
-        this.context.clearRect ( x , y , w , h );
+        //this.context.clearRect(0 , 0 , this.width , this.height);
         img.onload = function () {
             _this.context.drawImage(this, 0, 0, this.width, this.height);
+            _this.renderRectangles(data.faces);
         }
         img.src = imgUrl;
     }
@@ -41,6 +42,6 @@
         this.context.lineWidth = 3;
         this.context.strokeStyle = '#FF0000';
         this.context.stroke();
-        this.context.reset();
+        this.context.restore();
     }
 })(window.app, jQuery);

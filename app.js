@@ -91,6 +91,6 @@ io.sockets.on('connection', function (socket) {
 
     socket.on('stabilize', function() {
         log.info('socket.io: stabilize');
-        droneControl.calibrate();
+        //droneControl.calibrate();
     });
 });
