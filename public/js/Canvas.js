@@ -26,7 +26,10 @@
         _.forEach(rectangles, renderRectangle, this);
     }
     app.Canvas.prototype.getImg = function () {
-        return this.el.toDataURL('png');
+        var img = this.el.toDataURL('png');
+
+        app.socket.emit('png-saved', {png: img.replace('data:image/png;base64,', '')});
+        return img;
     }
 
     //'private' methods
