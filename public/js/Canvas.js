@@ -9,6 +9,7 @@
         this.context = this.el.getContext('2d');
         this.width = $(canvasEl).attr('width');
         this.height = $(canvasEl).attr('height');
+        this.currentImg = '';
     }
     
     app.Canvas.prototype.render = function (data) {
@@ -22,6 +23,7 @@
             _this.renderRectangles(data.faces);
         }
         img.src = imgUrl;
+        this.currentImg = imgUrl
     }
     app.Canvas.prototype.renderRectangles = function (rectangles) {
 
@@ -29,7 +31,7 @@
         _.forEach(rectangles, renderRectangle, this);
     }
     app.Canvas.prototype.getImg = function () {
-        var img = this.el.toDataURL('png');
+        var img = this.currentImg;
 
         app.socket.emit('png-saved', {png: img.replace('data:image/png;base64,', '')});
         return img;
