@@ -7,16 +7,18 @@
     "ar-drone"
   ],
   "homepage": "https://github.com/undashes/drone",
-  "author": {
-    "name": "Jean Lauliac",
-    "email": "jean@lauliac.com"
-  },
+  "author": {},
   "repository": {
     "type": "git",
     "url": "git@github.com:undashes/drone.git"
   },
   "dependencies": {
-    "ar-drone": "~0.1.0"
+    "ar-drone": "~0.1.0",
+    "coffee-script": "~1.6.3",
+    "colors": "~0.6.0-1",
+    "lodash": "~1.3.1",
+    "express": "~3.3.4",
+    "jade": "~0.33.0"
   },
   "devDependencies": {},
   "engines": {
