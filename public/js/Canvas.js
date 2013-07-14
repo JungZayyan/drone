@@ -12,13 +12,13 @@
     }
     
     app.Canvas.prototype.render = function (imgData) {
-        var img = new Image();
+        var img = new Image(),
+            imgUrl = imgData.indexOf('data:image/png;base64,') !== -1 ? imgData : 'data:image/png;base64,' + imgData,
+            _this = this;
         
-        console.log(imgData);
         img.onload = function () {
-            this.context.drawImage(this, 0, 0, this.width, this.height);
+            _this.context.drawImage(this, 0, 0, this.width, this.height);
         }
-        img.src = 'data:image/png;base64,' + imgData;
     }
     app.Canvas.prototype.renderRectangles = function (rectangles) {
 
