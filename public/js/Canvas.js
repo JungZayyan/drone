@@ -19,6 +19,7 @@
         img.onload = function () {
             _this.context.drawImage(this, 0, 0, this.width, this.height);
         }
+        img.src = imgUrl;
     }
     app.Canvas.prototype.renderRectangles = function (rectangles) {
 
