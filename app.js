@@ -3,8 +3,8 @@ var express = require('express'),
     routes = require('./routes'),
     api = require('./routes/api'),
     http = require('http'),
+    drone = require('./drone'),
     path = require('path'),
-    arDrone = require('ar-drone'),
     utils = require('./utils'),
     io = require('socket.io'),
     log = new utils.Log('drone');
@@ -36,11 +36,11 @@ app.configure('development', function(){
     app.locals.pretty = true;
 });
 
-routes(app);
+log.info('creating AR.drone control...');
+droneControl = drone();
 
-log.info('creating AR.drone client...');
-var arClient  = arDrone.createClient();
-api(app, arClient, log);
+api(app, droneControl);
+routes(app);
 
 server = http.createServer(app).listen(app.get('port'), function(){
     log.info("express server listening on port %d in mode %s.",
@@ -54,5 +54,9 @@ io.sockets.on('connection', function (socket) {
   socket.on('my other event', function (data) {
     console.log(data);
   });
+});
+
+droneControl.on('png', function (data) {
+    io.sockets.emit('png', { png: new Buffer(data).toString('base64') });
 });
 
