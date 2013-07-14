@@ -17,23 +17,6 @@
 
     }
 
-    /***********************
-    ** Canvas class
-    ***********************/
-    function Canvas (canvasEl) {
-        this.el = canvasEl;
-        this.context = this.el.getContext('2d');
-    }
-    Canvas.prototype.render = function (imgData) {
-        var img = new Image();
-        
-        console.log(imgData);
-        img.onload = function () {
-            this.context.drawImage(this, 0, 0, this.el.width, this.el.height);
-        }
-        img.src = imgData;
-    }
-
     app.init = function () {
         var streamCanvas = document.getElementById('png-stream'),
         
@@ -46,7 +29,7 @@
         setupSocketEvents();
 
         //Setup the canvas
-        app.streamCanvas = new Canvas(streamCanvas);
+        app.streamCanvas = new app.Canvas(streamCanvas);
     }
 
     $(document).ready(function () {
