@@ -11,8 +11,12 @@ class Drone extends EventEmitter
     constructor: (@log) ->
         @arClient  = arDrone.createClient()
         @pngStream = @arClient.getPngStream()
+        processing = false
         @pngStream.on 'data', (data) =>
+            return if processing
+            processing = true
             @processMatrix data, (error, faces) =>
+                processing = false
                 if error
                     @log.error error
                     return
