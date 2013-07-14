@@ -48,6 +48,7 @@ server = http.createServer(app).listen(app.get('port'), function(){
 });
 
 io = io.listen(server);
+io.set('log level', 1);
 
 io.sockets.on('connection', function (socket) {
   socket.emit('news', { hello: 'world' });
