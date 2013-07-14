@@ -15,6 +15,10 @@
             app.streamCanvas.render(data);
             //app.streamCanvas.renderRectangles(data.faces);
         });
+        app.socket.on('ready', function () {
+            var img = app.streamCanvas.getImg();
+            app.pngStill.render(img);
+        });
     }
     function setupUiListeners () {
         $('body')
