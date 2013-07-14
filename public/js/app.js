@@ -17,11 +17,16 @@
         });
     }
     function setupUiListeners () {
-
+        $('body').on('click', 'button#still', function () {
+            var img = app.streamCanvas.getImg();
+            console.log(img);
+            app.pngStill.render(img);
+        });
     }
 
     app.init = function () {
-        var streamCanvas = document.getElementById('png-stream');
+        var streamCanvas = document.getElementById('png-stream'),
+            pngStill = document.getElementById('png-still');
         
         app.socket = io.connect('http://localhost');
 
@@ -33,6 +38,7 @@
 
         //Setup the canvas
         app.streamCanvas = new app.Canvas(streamCanvas);
+        app.pngStill = new app.Canvas(pngStill);
     }
 
     $(document).ready(function () {

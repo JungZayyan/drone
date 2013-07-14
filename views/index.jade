@@ -9,15 +9,17 @@ html
                 h1 Aerial Event Photographer v.01
                     .hero-unit
                         canvas(width="1280", height="720")#png-stream
+                    .hero-unit
+                       canvas(width="1280", height="720")#png-still
          
                 //png source goes here
-                p.btn.btn-primary-btnlarge Take Picture &raquo;
+                button.btn.btn-primary-btn.btn-large#still Take Picture &raquo;
                 .row
                     .span8
-                        a.btn(href="#") On/Off
+                        button.btn#power On/Off
                 .row
                     .span12
-                        a.btn(href="#") Stabilize
+                        button.btn#stabalize Stabilize
                 .row
                     .span4
                 // freezeframe goes here
