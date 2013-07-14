@@ -66,6 +66,10 @@ droneControl.on('frame', function (png, faces) {
     });
 });
 
+droneControl.on('ready', function () {
+    io.sockets.emit('ready', {});
+});
+
 var landed = true;
 
 io.sockets.on('connection', function (socket) {
@@ -93,4 +97,5 @@ io.sockets.on('connection', function (socket) {
         log.info('socket.io: stabilize');
         //droneControl.calibrate();
     });
+
 });

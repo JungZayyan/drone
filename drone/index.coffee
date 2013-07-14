@@ -6,10 +6,11 @@ opencv          = require 'opencv'
 enable_opencv = true
 
 classifier = new opencv.CascadeClassifier('data/haarcascade_frontalface_alt.xml')
-speed = 0.05
+speed = 0.02
 
 class Drone extends EventEmitter
     constructor: (@log) ->
+        @ready = false
         @arClient  = arDrone.createClient()
         @pngStream = @arClient.getPngStream()
         processing = false
@@ -33,6 +34,11 @@ class Drone extends EventEmitter
                 callback null, faces
 
     update: (faces) ->
+        if faces.length == 0
+            @arClient.animateLeds 'blinkRed', 5, 2
+            @arClient.stop()
+            return
+
         bigRect = {left:1000, top:1000, bottom:0, right:0}
         screen = {left:0, top:0, bottom:360, right:640}
         for face in faces
@@ -44,12 +50,20 @@ class Drone extends EventEmitter
             bigRect.bottom = bottom if bottom > bigRect.bottom
         xDelta = bigRect.left - (screen.right - bigRect.right)
         if Math.abs(xDelta) < 10
-            client.right 0
+            @log.info 'centered!'
+            unless @ready
+                @ready = true
+                @arClient.animateLeds 'snakeGreenRed', 5, 2
+                @emit 'ready'
+            @arClient.right 0
         else
+            @ready = false
             if xDelta > 0
-                client.right speed
+                @log.info 'going right'
+                @arClient.right speed
             else
-                client.left speed
+                @log.info 'going left'
+                @arClient.left speed
 
     takeoff: ->
         @log.info 'taking off...'
