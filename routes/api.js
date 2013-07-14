@@ -6,11 +6,13 @@ module.exports = function(app, arClient, log) {
         log.info('taking off...');
         arClient.takeoff(function() {
             log.notice('drone took off');
+            arClient.stop();
         });
     });
 
     app.get('/api/land', function(req, res) {
         log.info('landing...');
+        arClient.stop();
         arClient.land(function() {
             log.notice('drone landed');
         });
