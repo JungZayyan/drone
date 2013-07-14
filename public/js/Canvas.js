@@ -16,6 +16,7 @@
             imgUrl = imgData.indexOf('data:image/png;base64,') !== -1 ? imgData : 'data:image/png;base64,' + imgData,
             _this = this;
         
+        this.context.clearRect ( x , y , w , h );
         img.onload = function () {
             _this.context.drawImage(this, 0, 0, this.width, this.height);
         }

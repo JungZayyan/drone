@@ -13,3 +13,17 @@ canvas {
     display: block;
     margin: 0 auto;
 }
+
+.rotation {
+    margin-top: 20px;
+    overflow: hidden;
+}
+.rotation .btn {
+    margin: 0;
+}
+.rotation #rotate-left {
+    float: left;
+}
+.rotation #rotate-right {
+    float: right;
+}
