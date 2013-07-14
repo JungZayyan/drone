@@ -1,50 +1,31 @@
 doctype 5
 html
-	head
-		link(href="css/bootstrap.min.css", rel="stylesheet")
+    head
+        link(href="css/bootstrap.min.css", rel="stylesheet")
 
-	body
-		.container-fluid
-			.row-fluid
-				h1= Aerial Event Photographer v.01
-				.hero-unit
-script 
-    $(document).ready(function(){
+    body
+        .container-fluid
+            .row-fluid
+                h1 Aerial Event Photographer v.01
+                    .hero-unit
+                        canvas(width="800", height="600")#png-stream
+         
+                //png source goes here
+                p.btn.btn-primary-btnlarge Take Picture &raquo;
+                .row
+                    .span8
+                        a.btn(href="#") On/Off
+                .row
+                    .span12
+                        a.btn(href="#") Stabilize
+                .row
+                    .span4
+                // freezeframe goes here
 
-        var socket  = new io.Socket(),
-                text        = $('#text');
-
-        socket.connect();
-
-        socket.on('connect', function () {
-            text.html('connected');
-        });
-
-        socket.on('message', function (msg) {
-            text.html(msg);
-        });
-
-        socket.on('disconnect', function () {
-            text.html('disconnected');
-        });
-
-    });
-/script 
-				//png source goes here
-				p "btn btn-primary-btnlarge" Take Picture &raquo;
-				.row
-				.span8
-				.btn href=# On/Off
-				.row
-				.span12
-				.btn href=# Stabilize
-				.row
-				.span4
-				// freezeframe goes here
-
-		script(src="http://code.jquery.com/jquery.js")
-		script(src="js/bootstrap.min.js")
-		script(src="/socket.io/socket.io.js")
-		script(src="lodash.min.js")
-		script(src="Canvas.js")
-		script(src="jquery-1.10.2.min.js")
+        script(src="js/jquery-1.10.2.min.js")
+        script(src="js/bootstrap.min.js")
+        script(src="/socket.io/socket.io.js")
+        script(src="js/lodash.min.js")
+        script(src="js/app.js")
+        script(src="js/Canvas.js")
+        

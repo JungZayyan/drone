@@ -33,4 +33,4 @@
         this.context.stroke();
         this.context.reset();
     }
-})(var app = app || {}, jQuery);
+})(window.app, jQuery);
