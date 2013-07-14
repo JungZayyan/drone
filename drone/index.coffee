@@ -3,7 +3,9 @@ arDrone         = require 'ar-drone'
 {EventEmitter}  = require 'events'
 opencv          = require 'opencv'
 
-enable_opencv = false
+enable_opencv = true
+
+classifier = new opencv.CascadeClassifier('data/haarcascade_frontalface_alt.xml')
 
 class Drone extends EventEmitter
     constructor: (@log) ->
@@ -18,9 +20,9 @@ class Drone extends EventEmitter
 
     processMatrix: (data, callback) ->
         return callback(null, {}) unless opencv? and enable_opencv
-        opencv.readImage data, (error, mat) ->
+        opencv.readImage data, (error, im) ->
             return callback(new Error('error reading image:' + error.message)) if error
-            mat.detectObject opencv.FACE_CASCADE, {}, (error, faces) ->
+            classifier.detectMultiScale im, (err, faces) ->
                 return callback(new Error('error processing image:' + error.message)) if error
                 callback null, faces
 
